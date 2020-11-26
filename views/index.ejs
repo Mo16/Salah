@@ -71,23 +71,23 @@
             <div class="name-and-time-container-container">
                 <div class="name-and-time-container fajr">
                     <p class="time-name">Fajr:</p>
-                    <p class="fajr time">05:00</p>
+                    <p id="fajrbegin" class="fajr time">05:00</p>
                 </div>
                 <div class="name-and-time-container">
                     <p class="time-name">Zuhr:</p>
-                    <p class="zuhr time">05:00</p>
+                    <p id="zuhrbegin" class="zuhr time">05:00</p>
                 </div>
                 <div class="name-and-time-container">
                     <p class="time-name">Asr:</p>
-                    <p class="asr time">05:00</p>
+                    <p id="asrbegin" class="asr time">05:00</p>
                 </div>
                 <div class="name-and-time-container">
                     <p class="time-name">Maghrib:</p>
-                    <p class="maghrib time">05:00</p>
+                    <p id="maghribbegin" class="maghrib time">05:00</p>
                 </div>
                 <div class="name-and-time-container isha">
                     <p class="time-name">Isha:</p>
-                    <p class="isha time">05:00</p>
+                    <p id="ishabegin" class="isha time">05:00</p>
                 </div>
             </div>
         </div>
@@ -110,23 +110,23 @@
             <div class="jamat-name-and-time-container-container">
                 <div class="jamat-name-and-time-container jamat-fajr">
                     <p class="time-name">Fajr:</p>
-                    <p class="fajr time">05:00</p>
+                    <p id="fajrjamat" class="fajr time">05:00</p>
                 </div>
                 <div class="jamat-name-and-time-container">
                     <p class="time-name">Zuhr:</p>
-                    <p class="zuhr time">05:00</p>
+                    <p id="zuhrjamat" class="zuhr time">05:00</p>
                 </div>
                 <div class="jamat-name-and-time-container">
                     <p class="time-name">Asr:</p>
-                    <p class="asr time">05:00</p>
+                    <p id="asrjamat" class="asr time">05:00</p>
                 </div>
                 <div class="jamat-name-and-time-container">
                     <p class="time-name">Maghrib:</p>
-                    <p class="maghrib time">05:00</p>
+                    <p id="maghribjamat" class="maghrib time">05:00</p>
                 </div>
                 <div class="jamat-name-and-time-container jamat-isha">
                     <p class="time-name">Isha:</p>
-                    <p class="isha time">05:00</p>
+                    <p id="ishajamat" class="isha time">05:00</p>
                 </div>
             </div>
         </div>
@@ -137,10 +137,15 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>
+    <script src='https://unpkg.com/@turf/turf/turf.min.js'></script>
     <script src="js/app.js"></script>
     <script src="js/floaters.js"></script>
     <script src="js/animations.js"></script>
     <script src="js/locating.js"></script>
+        <script src="js/closestMosque.js"></script>
+    <script src="js/jamatTimes.js"></script>
+    <script src="js/beginningTimes.js"></script>
+
     <script>
         console.log(window.innerWidth);
     </script>

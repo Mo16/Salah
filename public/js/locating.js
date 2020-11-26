@@ -1,3 +1,5 @@
+var longitude,latitude;
+
 function getLocation() {
     loadShow();
     if (navigator.geolocation) {
@@ -8,14 +10,12 @@ function getLocation() {
 }
 
 function savePosition(position) {
-    let latitude = position.coords.latitude
-    let longitude = position.coords.longitude
-        
-    makeAlert(`${latitude}, ${longitude}`);
+    latitude = position.coords.latitude
+    longitude = position.coords.longitude
+    getBeginningTimes()
+    findClosestMosque()
     loadHide();
 }
-
-
 
 function showError(error) {
     loadHide();

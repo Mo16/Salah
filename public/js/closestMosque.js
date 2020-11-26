@@ -29,7 +29,6 @@ function findClosestMosque() {
     return Math.min.apply(null, input);
   }
   
-
   function writeClosestMosqueTimes(chosen){
     fetch(`./data/mosqueData.json`)
     .then((response) => {

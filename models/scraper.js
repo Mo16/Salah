@@ -176,4 +176,5 @@ function parse() {
     }
   });
 }
+
 module.exports = scrapeit;

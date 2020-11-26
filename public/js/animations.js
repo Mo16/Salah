@@ -16,21 +16,21 @@ let tl = gsap.timeline({
     }
 });
 
-tl.from('.learn1h2', {
+tl.from('.start-times-container', {
     opacity: 0,
     x: -500
 })
-.from('.learn1p', {
+.from('.jamat-times-container', {
     opacity: 0,
     x: -500
 })
-.to('.learn1h2', {
-    opacity: 0,
-    x: 500
+.to('.start-times-container', {
+    opacity: 100,
+    x: 0
 })
-.to('.learn1p', {
-    opacity: 0,
-    x: 500
+.to('.jamat-times-container', {
+    opacity: 100,
+    x: 0
 })
 .from('.learn2h2', {
     opacity: 0,

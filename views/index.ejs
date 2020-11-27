@@ -60,88 +60,75 @@
         </div>
     </main>
     <canvas id="floaters"></canvas>
+
     <section id="learnsection">
+
         <!--<section class="scrolldown">
             <p>Scroll down</p>
             <span class="material-icons">keyboard_arrow_down</span>
         </section>-->
         <div id="start-times-container" class="start-times-container">
-            <h4 class="start-times-title">start times</h4>
+            <h4 id="start-times-title" class="start-times-title">start times</h4>
             <div class="name-and-time-container-container">
                 <div class="name-and-time-container fajr">
                     <p class="time-name">Fajr:</p>
-                    <p id="fajrbegin" class="fajr time">05:00</p>
+                    <p id="fajrbegin" class="fajr time"></p>
                 </div>
                 <div class="name-and-time-container">
                     <p class="time-name">Zuhr:</p>
-                    <p id="zuhrbegin" class="zuhr time">05:00</p>
+                    <p id="zuhrbegin" class="zuhr time"></p>
                 </div>
                 <div class="name-and-time-container">
                     <p class="time-name">Asr:</p>
-                    <p id="asrbegin" class="asr time">05:00</p>
+                    <p id="asrbegin" class="asr time"></p>
                 </div>
                 <div class="name-and-time-container">
                     <p class="time-name">Maghrib:</p>
-                    <p id="maghribbegin" class="maghrib time">05:00</p>
+                    <p id="maghribbegin" class="maghrib time"></p>
                 </div>
                 <div class="name-and-time-container isha">
                     <p class="time-name">Isha:</p>
-                    <p id="ishabegin" class="isha time">05:00</p>
+                    <p id="ishabegin" class="isha time"></p>
                 </div>
             </div>
         </div>
 
-        <div class="jamat-times-container">
-            <h4 class="jamat-times-title">Jamat Times:</h4>
-            <div class="mosque-select-container">
+        <div  class="jamat-times-container">
+            <h4 id="jamat-times-title" class="jamat-times-title">Jamat Times:</h4>
+            <div  class="mosque-select-container">
                 <div class="dropdown-container">
-                <!--
-                    <div class="dropdown-bar" onclick="mosqueDropdown()">
-                        <p id="dropdowntest"class="mosque-name-on-bar">Select Mosque:</p>
-                        <span class="material-icons" onclick="mosqueDropdown()">play_arrow</span>
-                    </div> !-->
-                      <select name="cars" id="cars">
-                        <option value="volvo">jami</option>
-                        <option value="saab">Saab</option>
-                        <option value="opel">Opel</option>
-                        <option value="audi">Audi</option>
-                      </select>
+                      <select onclick="getJamatTimes(this)" name="mosques" id="mosquedropdown">
+                        <option id="dropdown" value="select">Select a mosque</option>
 
-                    
-                    <!--
-                    <div class="mosques-dropdown-menu">
-                        <a onclick="mosqueDropdown(), changeDropdownBarText(this)  ">Portsmouth Jami Mosque</a>
-                        <a onclick="mosqueDropdown(), changeDropdownBarText(this) ">Masjide Noor</a>
-                        <a onclick="mosqueDropdown(), changeDropdownBarText(this) ">Didsbury Mosque</a>
-                        <a onclick="mosqueDropdown(), changeDropdownBarText(this)  ">Portsmouth central Mosque</a>
-                        <a onclick="mosqueDropdown(), changeDropdownBarText(this) ">Masjid e Hidayah</a>
-                    </div> !-->
+                      </select>        
                 </div>
             </div>
             <div class="jamat-name-and-time-container-container">
                 <div class="jamat-name-and-time-container jamat-fajr">
                     <p class="time-name">Fajr:</p>
-                    <p id="fajrjamat" class="fajr time">05:00</p>
+                    <p id="fajrjamat" class="fajr time"></p>
                 </div>
                 <div class="jamat-name-and-time-container">
                     <p class="time-name">Zuhr:</p>
-                    <p id="zuhrjamat" class="zuhr time">05:00</p>
+                    <p id="zuhrjamat" class="zuhr time"></p>
                 </div>
                 <div class="jamat-name-and-time-container">
                     <p class="time-name">Asr:</p>
-                    <p id="asrjamat" class="asr time">05:00</p>
+                    <p id="asrjamat" class="asr time"></p>
                 </div>
                 <div class="jamat-name-and-time-container">
                     <p class="time-name">Maghrib:</p>
-                    <p id="maghribjamat" class="maghrib time">05:00</p>
+                    <p id="maghribjamat" class="maghrib time"></p>
                 </div>
                 <div class="jamat-name-and-time-container jamat-isha">
                     <p class="time-name">Isha:</p>
-                    <p id="ishajamat" class="isha time">05:00</p>
+                    <p id="ishajamat" class="isha time"></p>
                 </div>
             </div>
         </div>
+
     </section>
+
 
     <footer id="footer">
         <p>&#169; Salah Time Ltd. 2020</p>
@@ -159,6 +146,6 @@
     <script src="js/closestMosque.js"></script>
     <script src="js/jamatTimes.js"></script>
     <script src="js/beginningTimes.js"></script>
-
+    <script src="js/backgroundChange.js"></script>
 </body>
 </html>

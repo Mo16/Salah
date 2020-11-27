@@ -1,8 +1,5 @@
 var longitude,latitude;
 
-
-
-
 function getLocation() {
     loadShow();
     if (navigator.geolocation) {
@@ -17,11 +14,24 @@ function savePosition(position) {
     longitude = position.coords.longitude
     Cookies.set("longitude",longitude,{expires: 9999})
     Cookies.set("latitude",latitude,{expires: 9999})
+    getCity(longitude,latitude)
     getBeginningTimes()
     findClosestMosque()
     loadHide();
 }
 
+function getCity(longitude,latitude){
+    fetch(`http://api.postcodes.io/postcodes?lon=${longitude}&lat=${latitude}`)
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+        city = data.result[0].admin_district
+        Cookies.set("city",city,{expires: 9999})
+    })
+    displayCityMosques()
+      
+}
 
 
 function showError(error) {

@@ -57,6 +57,8 @@ async function jamimosque(page) {
     let esha = document.querySelector("body > main > section.section.background-dark > div > div > div.s-12.m-12.l-4.margin-m-bottom.prayer-times > div:nth-child(9) > div:nth-child(3)").innerText;
     return {
       city: "Portsmouth",
+      value: "jamimosqueData",
+      dropdownid: "Portsmouth Jami Mosque",
       name: "jamimosque",
       longitude: -1.0817852,
       latitude: 50.7941668,
@@ -72,13 +74,15 @@ async function jamimosque(page) {
 
 async function didsburymosque(page) {
   let data = await page.evaluate(() => {
-    let fajr = document.querySelector("body > section.main-section > div.container > div > div > div.col-md-4.col-xs-12.col-sm-12.nopadding.pTimes > div > div > table > tbody > tr:nth-child(3) > td.jamah").innerHTML;
+    let fajr = document.querySelector("body > section.main-section > div.container > div > div > div.col-md-4.col-xs-12.col-sm-12.nopadding.pTimes > div > div > table > tbody > tr:nth-child(3) > td.jamah").innerText;
     let zuhr = document.querySelector("body > section.main-section > div.container > div > div > div.col-md-4.col-xs-12.col-sm-12.nopadding.pTimes > div > div > table > tbody > tr:nth-child(5) > td.jamah").innerHTML;
     let asr = document.querySelector("body > section.main-section > div.container > div > div > div.col-md-4.col-xs-12.col-sm-12.nopadding.pTimes > div > div > table > tbody > tr:nth-child(6) > td.jamah").innerHTML;
     let maghrib = document.querySelector("body > section.main-section > div.container > div > div > div.col-md-4.col-xs-12.col-sm-12.nopadding.pTimes > div > div > table > tbody > tr:nth-child(7) > td.jamah").innerHTML;
     let esha = document.querySelector("body > section.main-section > div.container > div > div > div.col-md-4.col-xs-12.col-sm-12.nopadding.pTimes > div > div > table > tbody > tr:nth-child(8) > td.jamah").innerHTML;
     return {
       city: "Manchester",
+      value: "didsburymosqueData",
+      dropdownid: "Didsbury Mosque",
       name: "didsburymosque",
       longitude: -2.2490131,
       latitude: 53.4227222,
@@ -101,7 +105,9 @@ async function masjidnoor(page) {
     let esha = document.querySelector("#cycle-slideshow > div > table > tbody > tr:nth-child(15) > td:nth-child(3)").innerText;
     return {
       city: "Manchester",
-      name: "masjidhidaya",
+      value: "masjidnoorData",
+      dropdownid: "Masjid e Noor",
+      name: "masjidnoor",
       longitude: -2.3350271,
       latitude: 52.6461168,
       fajr,
@@ -123,7 +129,9 @@ async function masjidhidaya(page) {
     let esha = document.querySelector("#schedule-today > table > tbody > tr:nth-child(7) > td:nth-child(3)").innerText;
     return {
       city: "Manchester",
-      name: "masjidnoor",
+      value: "masjidhidayaData",
+      name: "masjidhidaya",
+      dropdownid: "Masjid E Hidaya",
       longitude: -2.2655507,
       latitude: 53.460853,
       fajr,
@@ -145,6 +153,8 @@ async function portsmouthcentralmosque(page) {
     let esha = document.querySelector("#table > tbody > tr:nth-child(6) > td:nth-child(3) > span").innerText;
     return {
       city: "Portsmouth",
+      value: "portsmouthcentralmosqueData",
+      dropdownid: "Portsmouth Central Mosque",
       name: "portsmouthcentralmosque",
       longitude: -1.0795891,
       latitude: 50.7980541,

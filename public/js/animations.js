@@ -58,7 +58,7 @@ tl.from('.start-times-container', {
 })
 .from('.jamat-times-container', {
   opacity: 0,
-  x: -500
+  x: 500
 })
 .to('.start-times-container', {
   opacity: 100,

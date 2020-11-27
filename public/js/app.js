@@ -41,10 +41,6 @@ function navClose() {
 let dropdownOpen = false;
 
 function mosqueDropdown() {
-    var e = document.getElementById("dropdowntet");
-    var strUser = e.data-value;
-    console.log(strUser)
-
     if (dropdownOpen == true) {
         mosqueDropdownHide();
         dropdownOpen = false;
@@ -99,4 +95,17 @@ function loadShow() {
 
 function loadHide() {
     document.querySelector('.loadicon').style.display = "none";
+}
+
+
+function enableLocation(){
+    document.getElementById("start-times-title").innerText = "Please Enable Location Services"
+    document.getElementById("jamat-times-title").innerText = "Please Enable Location Services"
+    document.getElementById("mosquedropdown").style.display = "none"
+}
+
+function locationEnabled(){
+    document.getElementById("start-times-title").innerText = "Start Times"
+    document.getElementById("jamat-times-title").innerText = "Jamat Times"
+    document.getElementById("mosquedropdown").style.display = "block"
 }

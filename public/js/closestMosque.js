@@ -37,6 +37,7 @@ function findClosestMosque() {
     })
     .then((data) => {
       var times = data[`${chosen}Data`]
+      document.getElementById("dropdown").innerHTML = `Using closest Mosque (${times.dropdownid})`
       writeJamatTimes(times);
     });
   }

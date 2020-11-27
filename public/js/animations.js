@@ -1,53 +1,8 @@
 gsap.registerPlugin(ScrollTrigger);
 
 gsap.from('#mh1', {duration: 1, y:-50, opacity:0, delay: 0.25, ease: "expo.out"});
-gsap.from('#mosquepic', {duration: 1, y:-50, opacity:0, delay: 0.25, ease: "expo.out"});
 gsap.from('#mp', {duration: 0.5, opacity: 0, delay: 0.5});
 gsap.from('#learnbtn', {duration: 1, opacity: 0, delay: 1, ease: 'power1.out'});
-
-
-let tl = gsap.timeline({
-    scrollTrigger : {
-        trigger: '#learnsection',
-        pin: true,
-        start: "top top",
-        end: "+=2000",
-        scrub: 1
-    }
-});
-
-tl.from('.start-times-container', {
-    opacity: 0,
-    x: -500
-})
-.from('.jamat-times-container', {
-    opacity: 0,
-    x: -500
-})
-.to('.start-times-container', {
-    opacity: 100,
-    x: 0
-})
-.to('.jamat-times-container', {
-    opacity: 100,
-    x: 0
-})
-.from('.learn2h2', {
-    opacity: 0,
-    x: -500
-})
-.from('.learn2p', {
-    opacity: 0,
-    x: -500
-})
-.to('.learn2h2', {
-    opacity: 0,
-    x: 500
-})
-.to('.learn2p', {
-    opacity: 0,
-    x: 500
-});
 
 
 var learnbtn = document.querySelector('#learnbtn');
@@ -84,3 +39,32 @@ learnbtn.addEventListener('mouseleave', function(e){
     duration: 1
   });
 });
+
+
+let tl = gsap.timeline({
+  scrollTrigger : {
+      trigger: '.trigger',
+      pin: true,
+      start: "top top",
+      end: "+=1000",
+      scrub: 1
+  }
+});
+
+
+tl.from('.start-times-container', {
+  opacity: 0,
+  x: -500
+})
+.from('.jamat-times-container', {
+  opacity: 0,
+  x: -500
+})
+.to('.start-times-container', {
+  opacity: 100,
+  x: 0
+})
+.to('.jamat-times-container', {
+  opacity: 100,
+  x: 0
+})

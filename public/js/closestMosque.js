@@ -6,7 +6,7 @@ function findClosestMosque() {
         const mosques = Object.values(data);
         for (const key of mosques) {
           var from = turf.point([key.longitude, key.latitude]),
-          to = turf.point([longitude, latitude]),
+          to = turf.point([Cookies.get('longitude'), Cookies.get('latitude')]),
           distance = turf.distance(from, to);
           value = [distance, key.name],
           mosqueDistance.push(value);
@@ -18,6 +18,7 @@ function findClosestMosque() {
         lowest = min(distances);
         for (let c = 0; c < mosqueDistance.length; c++) {
           if (mosqueDistance[c][0] === lowest) {
+            console.log(mosqueDistance[c][1])
             writeClosestMosqueTimes(mosqueDistance[c][1]);
           }
         }
@@ -40,4 +41,4 @@ function findClosestMosque() {
     });
   }
   
-  
+  findClosestMosque()

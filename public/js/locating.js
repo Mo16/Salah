@@ -1,5 +1,8 @@
 var longitude,latitude;
 
+
+
+
 function getLocation() {
     loadShow();
     if (navigator.geolocation) {
@@ -12,10 +15,14 @@ function getLocation() {
 function savePosition(position) {
     latitude = position.coords.latitude
     longitude = position.coords.longitude
+    Cookies.set("longitude",longitude,{expires: 9999})
+    Cookies.set("latitude",latitude,{expires: 9999})
     getBeginningTimes()
     findClosestMosque()
     loadHide();
 }
+
+
 
 function showError(error) {
     loadHide();

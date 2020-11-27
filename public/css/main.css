@@ -372,6 +372,23 @@ canvas {
     margin: 0.3em 0;
     font-size: 1em;
 }
+#cars{
+    background-color: var(--green);
+    padding: 0.4em 1.3em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 20px;
+    margin: 0.3em 0;
+    font-size: 1em;
+    width: 100%;    
+}
+
+#cars span {
+    transform: rotate(90deg);
+    transition: all 1s ease;
+}
+
 
 .dropdown-bar span {
     transform: rotate(90deg);

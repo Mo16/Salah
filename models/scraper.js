@@ -6,6 +6,8 @@ var masjidnoorData,
   masjidhidayaData,
   didsburymosqueData,
   portsmouthcentralmosqueData,
+  eastlondonmosqueData,
+  finsburyparkmosqueData,
   filePath = "public/data/mosqueData.json";
 
 var scrapeit = async function scrapeSite() {
@@ -16,6 +18,8 @@ var scrapeit = async function scrapeSite() {
     "https://masjidenoor.com/",
     "https://masjidehidayah.org.uk/",
     "http://www.portsmouthcentralmasjid.com/",
+    "https://www.towerhamletsmosques.co.uk/elm/",
+    "https://finsburyparkmosque.org/about-us/prayer-timetable/",
   ];
   for (let i = 0; i < mosqueList.length; i++) {
     url = mosqueList[i];
@@ -29,7 +33,7 @@ var scrapeit = async function scrapeSite() {
         break;
       case "https://didsburymosque.com/":
         console.log(url);
-        didsburymosque(page);
+        await didsburymosque(page);
         break;
       case "https://masjidenoor.com/":
         console.log(url);
@@ -42,6 +46,14 @@ var scrapeit = async function scrapeSite() {
       case "http://www.portsmouthcentralmasjid.com/":
         console.log(url);
         portsmouthcentralmosque(page);
+        break;
+      case "https://www.towerhamletsmosques.co.uk/elm/":
+        console.log(url);
+        eastlondonmosque(page);
+        break;
+      case "https://finsburyparkmosque.org/about-us/prayer-timetable/":
+        console.log(url)
+        await finsburyparkmosque()
         break;
     }
   }
@@ -73,27 +85,32 @@ async function jamimosque(page) {
 }
 
 async function didsburymosque(page) {
-  let data = await page.evaluate(() => {
-    let fajr = document.querySelector("body > section.main-section > div.container > div > div > div.col-md-4.col-xs-12.col-sm-12.nopadding.pTimes > div > div > table > tbody > tr:nth-child(3) > td.jamah").innerText;
-    let zuhr = document.querySelector("body > section.main-section > div.container > div > div > div.col-md-4.col-xs-12.col-sm-12.nopadding.pTimes > div > div > table > tbody > tr:nth-child(5) > td.jamah").innerHTML;
-    let asr = document.querySelector("body > section.main-section > div.container > div > div > div.col-md-4.col-xs-12.col-sm-12.nopadding.pTimes > div > div > table > tbody > tr:nth-child(6) > td.jamah").innerHTML;
-    let maghrib = document.querySelector("body > section.main-section > div.container > div > div > div.col-md-4.col-xs-12.col-sm-12.nopadding.pTimes > div > div > table > tbody > tr:nth-child(7) > td.jamah").innerHTML;
-    let esha = document.querySelector("body > section.main-section > div.container > div > div > div.col-md-4.col-xs-12.col-sm-12.nopadding.pTimes > div > div > table > tbody > tr:nth-child(8) > td.jamah").innerHTML;
-    return {
-      city: "Manchester",
-      value: "didsburymosqueData",
-      dropdownid: "Didsbury Mosque",
-      name: "didsburymosque",
-      longitude: -2.2490131,
-      latitude: 53.4227222,
-      fajr,
-      zuhr,
-      asr,
-      maghrib,
-      esha,
-    };
-  });
-  didsburymosqueData = data;
+  try{
+    let data = await page.evaluate(() => {
+      let fajr = document.querySelector("body > section.main-section > div.container > div > div > div.col-md-4.col-xs-12.col-sm-12.nopadding.pTimes > div > div > table > tbody > tr:nth-child(3) > td.jamah").innerText;
+      let zuhr = document.querySelector("body > section.main-section > div.container > div > div > div.col-md-4.col-xs-12.col-sm-12.nopadding.pTimes > div > div > table > tbody > tr:nth-child(5) > td.jamah").innerText;
+      let asr = document.querySelector("body > section.main-section > div.container > div > div > div.col-md-4.col-xs-12.col-sm-12.nopadding.pTimes > div > div > table > tbody > tr:nth-child(6) > td.jamah").innerText;
+      let maghrib = document.querySelector("body > section.main-section > div.container > div > div > div.col-md-4.col-xs-12.col-sm-12.nopadding.pTimes > div > div > table > tbody > tr:nth-child(7) > td.jamah").innerText;
+      let esha = document.querySelector("body > section.main-section > div.container > div > div > div.col-md-4.col-xs-12.col-sm-12.nopadding.pTimes > div > div > table > tbody > tr:nth-child(8) > td.jamah").innerText;
+      
+      return {
+        city: "Manchester",
+        value: "didsburymosqueData",
+        dropdownid: "Didsbury Mosque",
+        name: "didsburymosque",
+        longitude: -2.2490131,
+        latitude: 53.4227222,
+        fajr,
+        zuhr,
+        asr,
+        maghrib,
+        esha,
+      };
+    });
+    didsburymosqueData = data;
+  }catch(err){
+    console.log("not parsed")
+  }
 }
 
 async function masjidnoor(page) {
@@ -166,8 +183,71 @@ async function portsmouthcentralmosque(page) {
     };
   });
   portsmouthcentralmosqueData = data;
-  parse();
+
 }
+
+async function eastlondonmosque(page) {
+  try{
+    let data = await page.evaluate(() => {
+      let fajr = document.querySelector("#fajr > td.prayer-jamaah > span").innerHTML;
+      let zuhr = document.querySelector("#zuhr > td.prayer-jamaah > span").innerHTML;
+      let asr = document.querySelector("#asr > td.prayer-jamaah > span").innerHTML;
+      let maghrib = document.querySelector("#maghrib > td.prayer-jamaah > span").innerHTML;
+      let esha = document.querySelector("#isha > td.prayer-jamaah > span").innerHTML;
+      return {
+        city: "London",
+        value: "eastlondonmosqueData",
+        dropdownid: "East London Mosque",
+        name: "eastlondonmosque",
+        longitude: -0.0676762,
+        latitude: 51.5175695,
+        fajr,
+        zuhr,
+        asr,
+        maghrib,
+        esha,
+      };
+    });
+    eastlondonmosqueData = data;
+  }catch(err){
+    console.log("not parsed")
+  }
+}
+
+async function mosque(page) {
+  try{  
+    let data = await page.evaluate(() => {
+    let fajr = .innerHTML;
+    let zuhr = .innerHTML;
+    let asr = .innerHTML;
+    let maghrib = .innerHTML;
+    let esha = .innerHTML;
+    return {
+      city: "",
+      value: "",
+      dropdownid: "  ",
+      name: "",
+      longitude: ,
+      latitude: ,
+      fajr,
+      zuhr,
+      asr,
+      maghrib,
+      esha,
+    };
+  });
+  Data = data;
+  }catch(err) {
+  console.log("not parsed")
+  }finally{
+  parse()
+  }
+}
+
+
+
+
+
 
 function parse() {
   mosques = {
@@ -176,6 +256,8 @@ function parse() {
     didsburymosqueData,
     masjidhidayaData,
     masjidnoorData,
+    eastlondonmosqueData,
+    finsburyparkmosqueData
   };
   jsonData = JSON.stringify(mosques);
   fs.writeFile(filePath, jsonData, function (err) {
@@ -188,3 +270,71 @@ function parse() {
 }
 
 module.exports = scrapeit;
+
+
+
+
+/* 
+
+How to scrape a website:
+
+1) At top, add variable name according to mosques name then add "Data" after it
+
+2) add mosque url to the "mosqueList" array
+
+3) Add it as a Switch case
+
+4) Fill up the function template with correct info
+    Change function name
+    Get the js path from browser
+    Change return values of the following accordingly:
+        city
+        value
+        name
+        dropdownid
+        longitude
+        latitude
+    Assign "data" to the correct variable
+    If its the last website to be scraped call the parse() function in the finally code block
+
+5) add the variable to the mosques array (preferably in order of functions)
+
+6) die
+
+
+
+
+Template for scraping
+
+async function mosque(page) {
+  try{  
+    let data = await page.evaluate(() => {
+    let fajr = .innerHTML;
+    let zuhr = .innerHTML;
+    let asr = .innerHTML;
+    let maghrib = .innerHTML;
+    let esha = .innerHTML;
+    return {
+      city: "",
+      value: "",
+      dropdownid: "  ",
+      name: "",
+      longitude: ,
+      latitude: ,
+      fajr,
+      zuhr,
+      asr,
+      maghrib,
+      esha,
+    };
+  });
+  Data = data;
+  }catch(err) {
+  console.log("not parsed")
+  }finally{
+  parse()
+  }
+}
+
+
+*/

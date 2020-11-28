@@ -39,6 +39,11 @@ function getJamatTimes(x) {
         option.text = element[0]
         dropdown.add(option)        
       }
+      dropdownLength = document.getElementById("mosquedropdown").options.length
+      if (dropdownLength === localMosques.length+1){
+        // work on this
+
+      }
     });
   }
   displayCityMosques()

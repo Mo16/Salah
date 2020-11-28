@@ -211,34 +211,6 @@ async function eastlondonmosque(page) {
     eastlondonmosqueData = data;
   }catch(err){
     console.log("not parsed")
-  }
-}
-
-async function mosque(page) {
-  try{  
-    let data = await page.evaluate(() => {
-    let fajr = .innerHTML;
-    let zuhr = .innerHTML;
-    let asr = .innerHTML;
-    let maghrib = .innerHTML;
-    let esha = .innerHTML;
-    return {
-      city: "",
-      value: "",
-      dropdownid: "  ",
-      name: "",
-      longitude: ,
-      latitude: ,
-      fajr,
-      zuhr,
-      asr,
-      maghrib,
-      esha,
-    };
-  });
-  Data = data;
-  }catch(err) {
-  console.log("not parsed")
   }finally{
   parse()
   }

@@ -21,7 +21,7 @@ function savePosition(position) {
 }
 
 function getCity(longitude,latitude){
-    fetch(`http://api.postcodes.io/postcodes?lon=${longitude}&lat=${latitude}`)
+    fetch(`https://api.postcodes.io/postcodes?lon=${longitude}&lat=${latitude}`)
     .then((response) => {
       return response.json();
     })

@@ -214,38 +214,39 @@ async function eastlondonmosque(page) {
   }
 }
 
-async function mosque(page) {
-  try{  
+
+async function finsburyparkmosque(page) {
+  try{
+    let browser = await puppeteer.launch();
+    const page = await browser.newPage();
+    await page.goto(url);
     let data = await page.evaluate(() => {
-    let fajr = .innerHTML;
-    let zuhr = .innerHTML;
-    let asr = .innerHTML;
-    let maghrib = .innerHTML;
-    let esha = .innerHTML;
-    return {
-      city: "",
-      value: "",
-      dropdownid: "  ",
-      name: "",
-      longitude: ,
-      latitude: ,
-      fajr,
-      zuhr,
-      asr,
-      maghrib,
-      esha,
-    };
-  });
-  Data = data;
-  }catch(err) {
-  console.log("not parsed")
-  }finally{
-  parse()
+      let fajr = document.querySelector("#prayertimediv > span > table > tbody > tr:nth-child(3) > td:nth-child(2)").innerText;
+      let zuhr = document.querySelector("#prayertimediv > span > table > tbody > tr:nth-child(3) > td:nth-child(3)").innerText;
+      let asr = document.querySelector("#prayertimediv > span > table > tbody > tr:nth-child(3) > td:nth-child(4)").innerText;
+      let maghrib = document.querySelector("#prayertimediv > span > table > tbody > tr:nth-child(3) > td:nth-child(5)").innerText;
+      let esha = document.querySelector("#prayertimediv > span > table > tbody > tr:nth-child(3) > td:nth-child(6)").innerText;
+      return {
+        city: "London",
+        value: "finsburyparkmosqueData",
+        dropdownid: "Finsbury Park Mosque",
+        name: "finsburyparkmosque",
+        longitude: -0.1230305,
+        latitude: 51.5689034,
+        fajr,
+        zuhr,
+        asr,
+        maghrib,
+        esha,
+      };
+    });
+    finsburyparkmosqueData = data;
+    }catch(err){
+      console.log("Not parsed")
+    }finally{
+      parse()
+    }
   }
-}
-
-
-
 
 
 

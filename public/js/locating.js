@@ -28,9 +28,10 @@ function getCity(longitude,latitude){
     .then((data) => {
         city = data.result[0].admin_district
         Cookies.set("city",city,{expires: 9999})
+        displayCityMosques(city)
     })
-    displayCityMosques()
-      
+
+    
 }
 
 

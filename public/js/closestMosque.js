@@ -18,7 +18,6 @@ function findClosestMosque() {
         lowest = min(distances);
         for (let c = 0; c < mosqueDistance.length; c++) {
           if (mosqueDistance[c][0] === lowest) {
-            console.log(mosqueDistance[c][1])
             writeClosestMosqueTimes(mosqueDistance[c][1]);
           }
         }

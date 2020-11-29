@@ -20,7 +20,7 @@ function getJamatTimes(x) {
   }
 
 
-  function displayCityMosques(){
+  function displayCityMosques(city){
     fetch("data/mosqueData.json")
     .then((response) => {
       return response.json();
@@ -29,20 +29,18 @@ function getJamatTimes(x) {
       const mosques = Object.values(data);
       localMosques = []
       for (const key of mosques) {
-        if (key.city === Cookies.get("city"))
+        if (key.city === Cookies.get("city") || key.city === city)
           localMosques.push([key.dropdownid,key.value])
       }
       var dropdown = document.getElementById("mosquedropdown")
+      dropdownLength = document.getElementById("mosquedropdown").options.length
       for (const element of localMosques) {
         var option = document.createElement("option")
         option.value = element[1]
         option.text = element[0]
-        dropdown.add(option)        
-      }
-      dropdownLength = document.getElementById("mosquedropdown").options.length
-      if (dropdownLength === localMosques.length+1){
-        // work on this
-
+        if (dropdownLength !== localMosques.length+1){
+          dropdown.add(option) 
+        }
       }
     });
   }

@@ -23,7 +23,7 @@ var scrapeit = async function scrapeSite() {
   ];
   for (let i = 0; i < mosqueList.length; i++) {
     url = mosqueList[i];
-    let browser = await puppeteer.launch();
+    let browser = await puppeteer.launch({ args: ['--no-sandbox'] });;
     const page = await browser.newPage();
     await page.goto(url);
     switch (url) {
@@ -260,7 +260,7 @@ function parse() {
     eastlondonmosqueData,
     finsburyparkmosqueData
   };
-  jsonData = JSON.stringify(mosques);
+  jsonData = JSON.stringify(mosques,null, 2);
   fs.writeFile(filePath, jsonData, function (err) {
     if (err) {
       console.log(err);

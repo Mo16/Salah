@@ -58,9 +58,10 @@ var scrapeit = async function scrapeSite() {
           break;
       }
     }catch(err){
-      console.log(`Not parsed ${url}`)
+      console.log(`Not parsed ${url} because:\n${err}`)
     }
   }
+  console.log("Writing to file...")
   parse()
 
 };
@@ -87,6 +88,7 @@ async function jamimosque(page) {
     };
   });
   jamimosqueData = data;
+  await page.close()
 }
 
 async function didsburymosque(page) {
@@ -113,6 +115,7 @@ async function didsburymosque(page) {
       };
     });
     didsburymosqueData = data;
+    await page.close()
   }catch(err){
     console.log("not parsed")
   }
@@ -140,6 +143,7 @@ async function masjidnoor(page) {
     };
   });
   masjidnoorData = data;
+  await page.close()
 }
 
 async function masjidhidaya(page) {
@@ -164,6 +168,7 @@ async function masjidhidaya(page) {
     };
   });
   masjidhidayaData = data;
+  await page.close()
 }
 
 async function portsmouthcentralmosque(page) {
@@ -189,6 +194,7 @@ async function portsmouthcentralmosque(page) {
       };
     });
     portsmouthcentralmosqueData = data;
+    await page.close()
   }catch(err){
     console.log("Not parsed")
   }
@@ -219,11 +225,11 @@ async function eastlondonmosque(page) {
       };
     });
     eastlondonmosqueData = data;
+    await page.close()
   }catch(err){
     console.log("not parsed")
   }
 }
-
 
 async function finsburyparkmosque(page) {
   try{
@@ -251,8 +257,9 @@ async function finsburyparkmosque(page) {
       };
     });
     finsburyparkmosqueData = data;
+    await page.close()
     }catch(err){
-      console.log("Not parsed")
+      console.log("Couldnt get data because: \n"+ err)
     }
   }
 

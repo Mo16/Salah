@@ -17,9 +17,9 @@ var scrapeit = async function scrapeSite() {
     "https://didsburymosque.com/",
     "https://masjidenoor.com/",
     "https://masjidehidayah.org.uk/",
-    "http://www.portsmouthcentralmasjid.com/",
-    "https://www.towerhamletsmosques.co.uk/elm/",
-    "https://finsburyparkmosque.org/about-us/prayer-timetable/",
+    // "http://www.portsmouthcentralmasjid.com/",
+    // "https://www.towerhamletsmosques.co.uk/elm/",
+    // "https://finsburyparkmosque.org/about-us/prayer-timetable/",
   ];
   for (let i = 0; i < mosqueList.length; i++) {
     url = mosqueList[i];
@@ -158,7 +158,8 @@ async function masjidhidaya(page) {
       esha,
     };
   });
-  masjidhidayaData = data;
+  masjidhidayaData = data
+  parse()
 }
 
 async function portsmouthcentralmosque(page) {

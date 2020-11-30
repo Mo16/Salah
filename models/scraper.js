@@ -225,7 +225,6 @@ async function eastlondonmosque(page) {
     });
     eastlondonmosqueData = data;
   }catch(err){
-    await page.close()
     console.log("Couldnt get data because: \n"+ err)
   }
 }
@@ -256,8 +255,9 @@ async function finsburyparkmosque(page) {
       };
     });
     finsburyparkmosqueData = data;
-    await page.close()
+
     }catch(err){
+      await page.close()
       console.log("Couldnt get data because: \n"+ err)
     }
   }

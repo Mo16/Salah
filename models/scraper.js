@@ -17,47 +17,54 @@ var scrapeit = async function scrapeSite() {
     "https://didsburymosque.com/",
     "https://masjidenoor.com/",
     "https://masjidehidayah.org.uk/",
-    // "http://www.portsmouthcentralmasjid.com/",
+    "http://www.portsmouthcentralmasjid.com/",
     "https://www.towerhamletsmosques.co.uk/elm/",
     "https://finsburyparkmosque.org/about-us/prayer-timetable/",
   ];
   for (let i = 0; i < mosqueList.length; i++) {
-    url = mosqueList[i];
-    let browser = await puppeteer.launch({headless: true, args: ['--no-sandbox','--disable-setuid-sandbox'] });;
-    const page = await browser.newPage();
-    await page.goto(url);
-    switch (url) {
-      case "http://portsmouthjamimosque.co.uk/":
-        console.log(url);
-        jamimosque(page);
-        break;
-      case "https://didsburymosque.com/":
-        console.log(url);
-        await didsburymosque(page);
-        break;
-      case "https://masjidenoor.com/":
-        console.log(url);
-        masjidnoor(page);
-        break;
-      case "https://masjidehidayah.org.uk/":
-        console.log(url);
-        masjidhidaya(page);
-        break;
-      case "http://www.portsmouthcentralmasjid.com/":
-        console.log(url);
-        portsmouthcentralmosque(page);
-        break;
-      case "https://www.towerhamletsmosques.co.uk/elm/":
-        console.log(url);
-        eastlondonmosque(page);
-        break;
-      case "https://finsburyparkmosque.org/about-us/prayer-timetable/":
-        console.log(url)
-        await finsburyparkmosque()
-        break;
+    try{
+      url = mosqueList[i];
+      let browser = await puppeteer.launch({headless: true, args: ['--no-sandbox','--disable-setuid-sandbox'] });;
+      const page = await browser.newPage();
+      await page.goto(url);
+      switch (url) {
+        case "http://portsmouthjamimosque.co.uk/":
+          console.log(url);
+          jamimosque(page);
+          break;
+        case "https://didsburymosque.com/":
+          console.log(url);
+          await didsburymosque(page);
+          break;
+        case "https://masjidenoor.com/":
+          console.log(url);
+          masjidnoor(page);
+          break;
+        case "https://masjidehidayah.org.uk/":
+          console.log(url);
+          masjidhidaya(page);
+          break;
+        case "http://www.portsmouthcentralmasjid.com/":
+          console.log(url);
+          portsmouthcentralmosque(page);
+          break;
+        case "https://www.towerhamletsmosques.co.uk/elm/":
+          console.log(url);
+          eastlondonmosque(page);
+          break;
+        case "https://finsburyparkmosque.org/about-us/prayer-timetable/":
+          console.log(url)
+          await finsburyparkmosque()
+          break;
+      }
+    }catch(err){
+      console.log(`Not parsed ${url}`)
+    }finally{
+      console.log("Scraping finished. Writing to file...");
     }
-  }
-  console.log("Scraping finished. Writing to file...");
+    
+    }
+
 };
 
 async function jamimosque(page) {
@@ -158,7 +165,7 @@ async function masjidhidaya(page) {
       esha,
     };
   });
-  masjidhidayaData = data
+  masjidhidayaData = data;
 }
 
 async function portsmouthcentralmosque(page) {
@@ -187,8 +194,9 @@ async function portsmouthcentralmosque(page) {
   }catch(err){
     console.log("Not parsed")
   }
-}
 
+
+}
 
 async function eastlondonmosque(page) {
   try{

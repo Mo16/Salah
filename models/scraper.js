@@ -186,6 +186,7 @@ async function portsmouthcentralmosque(page) {
 
 }
 
+
 async function eastlondonmosque(page) {
   try{
     let data = await page.evaluate(() => {

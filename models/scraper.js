@@ -46,11 +46,11 @@ var scrapeit = async function scrapeSite() {
           break;
         case "http://www.portsmouthcentralmasjid.com/":
           console.log(url);
-          portsmouthcentralmosque(page);
+          await portsmouthcentralmosque(page);
           break;
         case "https://www.towerhamletsmosques.co.uk/elm/":
           console.log(url);
-          eastlondonmosque(page);
+          await eastlondonmosque(page);
           break;
         case "https://finsburyparkmosque.org/about-us/prayer-timetable/":
           console.log(url)
@@ -196,7 +196,7 @@ async function portsmouthcentralmosque(page) {
     portsmouthcentralmosqueData = data;
     await page.close()
   }catch(err){
-    console.log("Not parsed")
+    console.log("Couldnt get data because: \n"+ err)
   }
 
 
@@ -227,7 +227,7 @@ async function eastlondonmosque(page) {
     eastlondonmosqueData = data;
     await page.close()
   }catch(err){
-    console.log("not parsed")
+    console.log("Couldnt get data because: \n"+ err)
   }
 }
 

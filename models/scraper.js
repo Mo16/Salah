@@ -59,11 +59,9 @@ var scrapeit = async function scrapeSite() {
       }
     }catch(err){
       console.log(`Not parsed ${url}`)
-    }finally{
-      console.log("Scraping finished. Writing to file...");
     }
-    
-    }
+  }
+  parse()
 
 };
 
@@ -255,8 +253,6 @@ async function finsburyparkmosque(page) {
     finsburyparkmosqueData = data;
     }catch(err){
       console.log("Not parsed")
-    }finally{
-      parse()
     }
   }
 

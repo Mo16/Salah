@@ -162,28 +162,31 @@ async function masjidhidaya(page) {
 }
 
 async function portsmouthcentralmosque(page) {
-  let data = await page.evaluate(() => {
-    let fajr = document.querySelector("#table > tbody > tr:nth-child(2) > td:nth-child(3) > span").innerText;
-    let zuhr = document.querySelector("#table > tbody > tr:nth-child(3) > td:nth-child(3) > span").innerText;
-    let asr = document.querySelector("#table > tbody > tr:nth-child(4) > td:nth-child(3) > span").innerText;
-    let maghrib = document.querySelector("#table > tbody > tr:nth-child(5) > td:nth-child(3) > span").innerText;
-    let esha = document.querySelector("#table > tbody > tr:nth-child(6) > td:nth-child(3) > span").innerText;
-    return {
-      city: "Portsmouth",
-      value: "portsmouthcentralmosqueData",
-      dropdownid: "Portsmouth Central Mosque",
-      name: "portsmouthcentralmosque",
-      longitude: -1.0795891,
-      latitude: 50.7980541,
-      fajr,
-      zuhr,
-      asr,
-      maghrib,
-      esha,
-    };
-  });
-  portsmouthcentralmosqueData = data;
-
+  try{
+    let data = await page.evaluate(() => {
+      let fajr = document.querySelector("#table > tbody > tr:nth-child(2) > td:nth-child(3) > span").innerText;
+      let zuhr = document.querySelector("#table > tbody > tr:nth-child(3) > td:nth-child(3) > span").innerText;
+      let asr = document.querySelector("#table > tbody > tr:nth-child(4) > td:nth-child(3) > span").innerText;
+      let maghrib = document.querySelector("#table > tbody > tr:nth-child(5) > td:nth-child(3) > span").innerText;
+      let esha = document.querySelector("#table > tbody > tr:nth-child(6) > td:nth-child(3) > span").innerText;
+      return {
+        city: "Portsmouth",
+        value: "portsmouthcentralmosqueData",
+        dropdownid: "Portsmouth Central Mosque",
+        name: "portsmouthcentralmosque",
+        longitude: -1.0795891,
+        latitude: 50.7980541,
+        fajr,
+        zuhr,
+        asr,
+        maghrib,
+        esha,
+      };
+    });
+    portsmouthcentralmosqueData = data;
+  }catch(err){
+    console.log("Not parsed")
+  }
 }
 
 
